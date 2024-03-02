@@ -1,7 +1,10 @@
 package com.example.buildingcompany.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,6 +23,10 @@ public class TypeOfAssortment extends AbstractEntity{
     @Column
     String name;
 
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "assortment_id")
+    private Assortment assortment;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -35,7 +42,7 @@ public class TypeOfAssortment extends AbstractEntity{
 
     @Override
     public String toString() {
-        return "TypeOfAssortmentController{" +
+        return "TypeOfAssortment{" +
                 "name='" + name + '\'' +
                 '}';
     }
