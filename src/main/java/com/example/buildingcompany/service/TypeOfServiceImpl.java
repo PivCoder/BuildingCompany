@@ -1,5 +1,6 @@
 package com.example.buildingcompany.service;
 
+import com.example.buildingcompany.exception.ElementNotFound;
 import com.example.buildingcompany.model.TypeOfAssortment;
 import com.example.buildingcompany.repository.TypeOfAssortmentRepository;
 import com.example.buildingcompany.service.api.TypeOfAssortmentService;
@@ -7,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 //TODO доделать нормальные методы
 
@@ -29,8 +29,8 @@ public class TypeOfServiceImpl implements TypeOfAssortmentService {
     }
 
     @Override
-    public Optional<TypeOfAssortment> getTypeOfAssortmentById(long id) {
-        return typeOfAssortmentRepository.findById(id);
+    public TypeOfAssortment getTypeOfAssortmentById(long id) {
+        return typeOfAssortmentRepository.findById(id).orElseThrow(() -> new ElementNotFound(""));
     }
 
     @Override

@@ -1,8 +1,6 @@
 package com.example.buildingcompany.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +16,7 @@ import java.util.Objects;
 @NoArgsConstructor
 public class TypeOfAssortment extends AbstractEntity{
     @Column
-    String name;
+    private String name;
 
     @Override
     public boolean equals(Object o) {
@@ -30,12 +28,12 @@ public class TypeOfAssortment extends AbstractEntity{
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(getId());
     }
 
     @Override
     public String toString() {
-        return "TypeOfAssortmentController{" +
+        return "TypeOfAssortment{" +
                 "name='" + name + '\'' +
                 '}';
     }

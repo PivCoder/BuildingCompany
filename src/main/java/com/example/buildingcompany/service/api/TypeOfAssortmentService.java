@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface TypeOfAssortmentService {
     TypeOfAssortment addTypeOfAssortment(TypeOfAssortment typeOfAssortment);
     void deleteTypeOfAssortment(long id);
-    Optional<TypeOfAssortment> getTypeOfAssortmentById(long id);
+    TypeOfAssortment getTypeOfAssortmentById(long id);
     TypeOfAssortment editTypeOfAssortment(TypeOfAssortment typeOfAssortment);
     List<TypeOfAssortment> getAllTypeOfAssortment();
 }
