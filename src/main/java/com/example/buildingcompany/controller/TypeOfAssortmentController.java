@@ -9,4 +9,5 @@ public class TypeOfAssortmentController {
     public String showTypeOfAssortment(){
         return "typeOfAssortment";
     }
+
 }
