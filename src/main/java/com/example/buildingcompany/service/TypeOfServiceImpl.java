@@ -1,22 +1,29 @@
 package com.example.buildingcompany.service;
 
-import com.example.buildingcompany.exception.ElementNotFound;
+import com.example.buildingcompany.exception.ElementNotFoundException;
 import com.example.buildingcompany.model.TypeOfAssortment;
 import com.example.buildingcompany.repository.TypeOfAssortmentRepository;
 import com.example.buildingcompany.service.api.TypeOfAssortmentService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 
 //TODO доделать нормальные методы
 
 @Service
+@Validated
+@Transactional
 public class TypeOfServiceImpl implements TypeOfAssortmentService {
 
-    //TODO переделать в инъекцию метода
+    TypeOfAssortmentRepository typeOfAssortmentRepository;
+
     @Autowired
-    private TypeOfAssortmentRepository typeOfAssortmentRepository;
+    public void setTypeOfAssortmentRepository(TypeOfAssortmentRepository typeOfAssortmentRepository) {
+        this.typeOfAssortmentRepository = typeOfAssortmentRepository;
+    }
 
     @Override
     public TypeOfAssortment addTypeOfAssortment(TypeOfAssortment typeOfAssortment) {
@@ -30,7 +37,7 @@ public class TypeOfServiceImpl implements TypeOfAssortmentService {
 
     @Override
     public TypeOfAssortment getTypeOfAssortmentById(long id) {
-        return typeOfAssortmentRepository.findById(id).orElseThrow(() -> new ElementNotFound(""));
+        return typeOfAssortmentRepository.findById(id).orElseThrow(() -> new ElementNotFoundException(" "));
     }
 
     @Override

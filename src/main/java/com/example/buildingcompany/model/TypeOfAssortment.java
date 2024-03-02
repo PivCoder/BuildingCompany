@@ -18,6 +18,10 @@ public class TypeOfAssortment extends AbstractEntity{
     @Column
     private String name;
 
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "assortment_id")
+    private Assortment assortment;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

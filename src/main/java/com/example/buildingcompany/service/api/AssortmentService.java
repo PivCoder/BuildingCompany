@@ -9,7 +9,7 @@ import com.example.buildingcompany.model.Assortment;
 public interface AssortmentService {
     Assortment addAssortment(Assortment assortment);
     void deleteAssortment(long id);
-    Optional<Assortment> getAssortmentById(long id);
+    Assortment getAssortmentById(long id);
     Assortment editAssortment(Assortment assortment);
     List<Assortment> getAllAssortment();
 }
