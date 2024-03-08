@@ -1,19 +1,15 @@
 package com.example.buildingcompany.model;
 
-import java.util.List;
-import java.util.Objects;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import com.example.buildingcompany.model.enums.ProposalType;
+import com.example.buildingcompany.model.enums.Status;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-//TODO описать данную сущность и связь с TypeOfAssortment
+import java.util.Objects;
+import java.util.Set;
 
 @Entity(name = "assortment")
 @Table(schema = "project", name = "assortment")
@@ -25,22 +21,34 @@ public class Assortment extends AbstractEntity{
     @Column
     private String name;
 
-    @OneToMany(mappedBy = "assortment", fetch = FetchType.LAZY)
-    private List<TypeOfAssortment> typeOfAssortmentList;
-
     //TODO подумать над типом данных
     @Column
-    private String descriptioString;
+    private String description;
 
     @Column
-    private String imgString;
-    
+    private String images;
+
+    @Enumerated(EnumType.STRING)
+    @Column
+    private ProposalType type;
+
+    @OneToMany(mappedBy = "assortment", fetch = FetchType.EAGER)
+    private Set<Favor> favors;
+
+    @OneToMany(mappedBy = "assortment", fetch = FetchType.EAGER)
+    private Set<House> houses;
+
+    @OneToMany(mappedBy = "assortment", fetch = FetchType.EAGER)
+    private Set<Plot> plots;
+
+    private Status status;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Assortment that = (Assortment) o;
-        return Objects.equals(name, that.name);
+        return Objects.equals(getId(), that.getId());
     }
 
     @Override
@@ -52,7 +60,10 @@ public class Assortment extends AbstractEntity{
     public String toString() {
         return "Assortment{" +
                 "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", images='" + images + '\'' +
+                ", type=" + type +
+                ", status=" + status +
                 '}';
     }
-
 }

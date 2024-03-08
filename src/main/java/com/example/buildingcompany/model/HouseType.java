@@ -8,26 +8,26 @@ import lombok.Setter;
 
 import java.util.Objects;
 
-@Entity(name = "typeOfAssortment")
-@Table(schema = "project", name = "typeOfAssortment")
+@Entity(name = "house_type")
+@Table(schema = "project", name = "house_type")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TypeOfAssortment extends AbstractEntity{
+public class HouseType extends AbstractEntity{
     @Column
     private String name;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "assortment_id")
-    private Assortment assortment;
+    @JoinColumn(name = "house_id")
+    private House house;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TypeOfAssortment that = (TypeOfAssortment) o;
-        return Objects.equals(name, that.name);
+        HouseType that = (HouseType) o;
+        return Objects.equals(getId(), that.getId());
     }
 
     @Override
@@ -37,7 +37,7 @@ public class TypeOfAssortment extends AbstractEntity{
 
     @Override
     public String toString() {
-        return "TypeOfAssortment{" +
+        return "HouseType{" +
                 "name='" + name + '\'' +
                 '}';
     }

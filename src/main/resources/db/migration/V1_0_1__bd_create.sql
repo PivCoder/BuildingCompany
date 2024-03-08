@@ -131,7 +131,7 @@ DROP TABLE IF EXISTS project.assortment CASCADE;
 
 DROP TYPE IF EXISTS proposal_type;
 
-CREATE TYPE proposal_type AS ENUM ('house', 'favor', 'plot');
+CREATE TYPE proposal_type AS ENUM ('HOUSE', 'FAVOR', 'PLOT');
 
 create table IF NOT EXISTS project.assortment
 (
@@ -258,6 +258,6 @@ VALUES
 
 INSERT INTO project.assortment(id, name, type, assortment_item_id, description, images)
 VALUES
-    (1, 'Фасадная отделка', 'favor', 1, 'Описание фасадной отделки...', 'someFolder'),
-    (2, 'Дом 1', 'house', 3, 'Описание дома...', 'someFolder'),
-    (3, 'Участок 1', 'plot', 2, 'Описание участка...', 'someFolder');
+    (1, 'Фасадная отделка', 'FAVOR', 1, 'Описание фасадной отделки...', 'someFolder'),
+    (2, 'Дом 1', 'HOUSE', 3, 'Описание дома...', 'someFolder'),
+    (3, 'Участок 1', 'PLOT', 2, 'Описание участка...', 'someFolder');
