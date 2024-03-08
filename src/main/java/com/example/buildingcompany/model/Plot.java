@@ -14,7 +14,7 @@ import java.util.Objects;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Plot extends AbstractEntity{
+public class Plot extends Assortment{
     @Column
     private String address;
 
@@ -26,10 +26,6 @@ public class Plot extends AbstractEntity{
 
     @Column
     private boolean water;
-
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "assortment_id")
-    private Assortment assortment;
 
     @Override
     public boolean equals(Object o) {

@@ -1,6 +1,5 @@
 package com.example.buildingcompany.model;
 
-import com.example.buildingcompany.model.enums.ProposalType;
 import com.example.buildingcompany.model.enums.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,15 +8,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Objects;
-import java.util.Set;
 
 @Entity(name = "assortment")
 @Table(schema = "project", name = "assortment")
 @Getter
 @Setter
 @AllArgsConstructor 
-@NoArgsConstructor 
-public class Assortment extends AbstractEntity{
+@NoArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Assortment extends AbstractEntity{
     @Column
     private String name;
 
@@ -27,19 +26,6 @@ public class Assortment extends AbstractEntity{
 
     @Column
     private String images;
-
-    @Enumerated(EnumType.STRING)
-    @Column
-    private ProposalType type;
-
-    @OneToMany(mappedBy = "assortment", fetch = FetchType.EAGER)
-    private Set<Favor> favors;
-
-    @OneToMany(mappedBy = "assortment", fetch = FetchType.EAGER)
-    private Set<House> houses;
-
-    @OneToMany(mappedBy = "assortment", fetch = FetchType.EAGER)
-    private Set<Plot> plots;
 
     private Status status;
 
@@ -62,7 +48,6 @@ public class Assortment extends AbstractEntity{
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", images='" + images + '\'' +
-                ", type=" + type +
                 ", status=" + status +
                 '}';
     }

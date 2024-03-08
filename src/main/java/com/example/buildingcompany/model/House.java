@@ -17,7 +17,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class House extends AbstractEntity{
+public class House extends Assortment{
     @Column
     private double area;
 
@@ -35,10 +35,6 @@ public class House extends AbstractEntity{
 
     @ManyToMany(mappedBy = "houses")
     private Set<Planning> plannings;
-
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "assortment_id")
-    private Assortment assortment;
 
     private PercentageOfReadiness percentageOfReadiness;
 

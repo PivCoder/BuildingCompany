@@ -1,5 +1,21 @@
 create schema IF NOT EXISTS project;
 
+DROP TABLE IF EXISTS project.assortment CASCADE;
+
+create table IF NOT EXISTS project.assortment
+(
+    id numeric not null
+        constraint assortment_pkey
+            primary key,
+    name varchar(100) not null,
+    description text,
+    images varchar(150)
+
+);
+
+create index IF NOT EXISTS name_index
+    on project.assortment (name);
+
 DROP TABLE IF EXISTS project.user CASCADE;
 
 create table IF NOT EXISTS project.user
@@ -40,7 +56,9 @@ create table IF NOT EXISTS project.house
 (
     id numeric not null
         constraint house_pkey
-            primary key,
+            primary key
+        constraint house_assortment_id_fkey
+            references project.assortment,
     house_type_id numeric
         constraint house_type_id_fkey
             references project.house_type not null,
@@ -50,7 +68,6 @@ create table IF NOT EXISTS project.house
     area real not null,
     heated_area real,
     number_of_floors int not null
-
 );
 
 DROP TABLE IF EXISTS project.planning CASCADE;
@@ -98,7 +115,9 @@ create table IF NOT EXISTS project.favor
 (
     id numeric not null
         constraint favor_pkey
-            primary key,
+            primary key
+        constraint favor_assortment_id_fkey
+            references project.assortment,
     favor_type_id numeric
         constraint favor_type_id_fkey
             references project.favor_type not null,
@@ -120,40 +139,14 @@ create table IF NOT EXISTS project.plot
 (
     id numeric not null
         constraint plot_pkey
-            primary key,
+            primary key
+        constraint plot_assortment_id_fkey
+            references project.assortment,
     address varchar(150) not null,
     size real not null,
     electricity bool,
     water bool
 );
-
-DROP TABLE IF EXISTS project.assortment CASCADE;
-
-DROP TYPE IF EXISTS proposal_type;
-
-CREATE TYPE proposal_type AS ENUM ('HOUSE', 'FAVOR', 'PLOT');
-
-create table IF NOT EXISTS project.assortment
-(
-    id numeric not null
-        constraint assortment_pkey
-        primary key,
-    name varchar(100) not null,
-    type proposal_type not null,
-    assortment_item_id numeric
-        constraint favor_id_fkey
-            references project.favor
-        constraint house_id_fkey
-            references project.house
-        constraint plot_id_fkey
-            references project.plot,
-    description text,
-    images varchar(150)
-
-);
-
-create index IF NOT EXISTS name_index
-    on project.assortment (name);
 
 create sequence IF NOT EXISTS project.user_seq;
 
@@ -198,6 +191,18 @@ alter sequence project.assortment_seq owned by project.assortment.id;
 INSERT INTO project.user(id, name, password) VALUES (1, 'TestUser1', 'TestPassword1');
 INSERT INTO project.user(id, name, password) VALUES (2, 'TestUser2', 'TestPassword2');
 INSERT INTO project.user(id, name, password) VALUES (3, 'TestUser3', 'TestPassword3');
+
+INSERT INTO project.assortment(id, name, description, images)
+VALUES
+    (1, 'Дом 1', 'Описание дома...', 'someFolder'),
+    (2, 'Дом 2', 'Описание дома...', 'someFolder'),
+    (3, 'Дом 3', 'Описание дома...', 'someFolder'),
+    (4, 'Фасадная отделка 1', 'Описание фасадной отделки...', 'someFolder'),
+    (5, 'Фасадная отделка 2', 'Описание фасадной отделки...', 'someFolder'),
+    (6, 'Фасадная отделка 3', 'Описание фасадной отделки...', 'someFolder'),
+    (7, 'Участок 1', 'Описание участка...', 'someFolder'),
+    (8, 'Участок 2', 'Описание участка...', 'someFolder'),
+    (9, 'Участок 3', 'Описание участка...', 'someFolder');
 
 INSERT INTO project.house_type(id, name)
 VALUES
@@ -255,9 +260,3 @@ VALUES
     (1, 'ул. Ленина, 12', 1000, true, true),
     (2, 'д. Садовая, 1', 2000, false, true),
     (3, 'ул. Озерная, 10', 1500, true, false);
-
-INSERT INTO project.assortment(id, name, type, assortment_item_id, description, images)
-VALUES
-    (1, 'Фасадная отделка', 'FAVOR', 1, 'Описание фасадной отделки...', 'someFolder'),
-    (2, 'Дом 1', 'HOUSE', 3, 'Описание дома...', 'someFolder'),
-    (3, 'Участок 1', 'PLOT', 2, 'Описание участка...', 'someFolder');

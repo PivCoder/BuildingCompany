@@ -15,7 +15,7 @@ import java.util.Objects;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Favor extends AbstractEntity{
+public class Favor extends Assortment{
     @Column
     private String area;
 
@@ -33,10 +33,6 @@ public class Favor extends AbstractEntity{
 
     @OneToMany(mappedBy = "favor", fetch = FetchType.LAZY)
     private List<TypeOfTimeLimit> typeOfTimeLimitList;
-
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "assortment_id")
-    private Assortment assortment;
 
     @Override
     public boolean equals(Object o) {
