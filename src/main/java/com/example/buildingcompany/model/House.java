@@ -1,6 +1,7 @@
 package com.example.buildingcompany.model;
 
 import com.example.buildingcompany.model.enums.PercentageOfReadiness;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,7 +34,7 @@ public class House extends Assortment{
     @ManyToOne
     private MaterialType materialType;
 
-    @ManyToMany(mappedBy = "houses")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "houses")
     private Set<Planning> plannings;
 
     @Enumerated(EnumType.STRING)

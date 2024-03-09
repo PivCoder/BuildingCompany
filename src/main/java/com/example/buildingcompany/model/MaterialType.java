@@ -18,10 +18,6 @@ public class MaterialType extends AbstractEntity{
     @Column
     private String name;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "house_id", referencedColumnName = "id")
-    private House house;
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

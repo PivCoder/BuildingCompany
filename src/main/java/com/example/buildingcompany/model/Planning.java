@@ -1,5 +1,6 @@
 package com.example.buildingcompany.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,7 +23,8 @@ public class Planning extends AbstractEntity{
     @Column
     private String images;
 
-    @ManyToMany
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "house_planning",
             joinColumns = @JoinColumn(name = "planning_id"),
             inverseJoinColumns = @JoinColumn(name = "house_id"))
