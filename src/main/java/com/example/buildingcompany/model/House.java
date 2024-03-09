@@ -27,15 +27,17 @@ public class House extends Assortment{
     @Column
     private int numberOfFloors;
 
-    @OneToMany(mappedBy = "house", fetch = FetchType.LAZY)
-    private List<HouseType> houseTypeList;
+    @ManyToOne
+    private HouseType houseType;
 
-    @OneToMany(mappedBy = "house", fetch = FetchType.LAZY)
-    private List<MaterialType> materialTypeList;
+    @ManyToOne
+    private MaterialType materialType;
 
     @ManyToMany(mappedBy = "houses")
     private Set<Planning> plannings;
 
+    @Enumerated(EnumType.STRING)
+    @Column
     private PercentageOfReadiness percentageOfReadiness;
 
     @Override

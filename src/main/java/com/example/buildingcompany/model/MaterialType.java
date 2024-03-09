@@ -19,7 +19,7 @@ public class MaterialType extends AbstractEntity{
     private String name;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "house_id")
+    @JoinColumn(name = "house_id", referencedColumnName = "id")
     private House house;
 
     @Override

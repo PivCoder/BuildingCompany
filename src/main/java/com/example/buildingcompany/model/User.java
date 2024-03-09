@@ -1,9 +1,7 @@
 package com.example.buildingcompany.model;
 
 import com.example.buildingcompany.model.enums.UserType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +22,8 @@ public class User extends AbstractEntity{
     @Column
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    @Column
     private UserType userType;
 
     @Override

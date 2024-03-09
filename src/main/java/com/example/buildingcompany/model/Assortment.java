@@ -17,6 +17,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Assortment extends AbstractEntity{
+
     @Column
     private String name;
 
@@ -27,6 +28,8 @@ public abstract class Assortment extends AbstractEntity{
     @Column
     private String images;
 
+    @Enumerated(EnumType.STRING)
+    @Column
     private Status status;
 
     @Override

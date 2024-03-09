@@ -18,10 +18,6 @@ public class HouseType extends AbstractEntity{
     @Column
     private String name;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "house_id")
-    private House house;
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -18,10 +18,6 @@ public class FavorType extends AbstractEntity{
     @Column
     private String name;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "favor_id")
-    private Favor favor;
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
