@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 @MappedSuperclass
 abstract class AbstractEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", updatable = false, nullable = false)
     private long id;
 

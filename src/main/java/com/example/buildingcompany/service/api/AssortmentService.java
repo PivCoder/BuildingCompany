@@ -1,11 +1,9 @@
 package com.example.buildingcompany.service.api;
 
-import java.util.List;
-import java.util.Optional;
-
 import com.example.buildingcompany.model.Assortment;
 
-//TODO описать данный интерфейс
+import java.util.List;
+
 public interface AssortmentService {
     Assortment addAssortment(Assortment assortment);
     void deleteAssortment(long id);

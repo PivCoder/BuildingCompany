@@ -1,6 +1,6 @@
 package com.example.buildingcompany.model;
 
-import com.example.buildingcompany.model.enums.Status;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,35 +8,33 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Objects;
+import java.util.Set;
 
-@Entity(name = "assortment")
-@Table(schema = "project", name = "assortment")
+@Entity(name = "planning")
+@Table(schema = "project", name = "planning")
 @Getter
 @Setter
-@AllArgsConstructor 
+@AllArgsConstructor
 @NoArgsConstructor
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Assortment extends AbstractEntity{
-
+public class Planning extends AbstractEntity{
     @Column
     private String name;
-
-    //TODO подумать над типом данных
-    @Column
-    private String description;
 
     @Column
     private String images;
 
-    @Enumerated(EnumType.STRING)
-    @Column
-    private Status status;
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "house_planning",
+            joinColumns = @JoinColumn(name = "planning_id"),
+            inverseJoinColumns = @JoinColumn(name = "house_id"))
+    private Set<House> houses;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Assortment that = (Assortment) o;
+        Planning that = (Planning) o;
         return Objects.equals(getId(), that.getId());
     }
 
@@ -47,11 +45,9 @@ public abstract class Assortment extends AbstractEntity{
 
     @Override
     public String toString() {
-        return "Assortment{" +
+        return "Planning{" +
                 "name='" + name + '\'' +
-                ", description='" + description + '\'' +
                 ", images='" + images + '\'' +
-                ", status=" + status +
                 '}';
     }
 }
