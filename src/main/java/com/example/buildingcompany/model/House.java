@@ -34,9 +34,6 @@ public class House extends Assortment{
     @ManyToOne
     private MaterialType materialType;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "houses")
-    private Set<Planning> plannings;
-
     @Enumerated(EnumType.STRING)
     @Column
     private PercentageOfReadiness percentageOfReadiness;

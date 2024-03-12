@@ -17,20 +17,20 @@ create table IF NOT EXISTS project.assortment
 create index IF NOT EXISTS name_index
     on project.assortment (name);
 
-DROP TABLE IF EXISTS project.user CASCADE;
+DROP TABLE IF EXISTS project.application_user CASCADE;
 
-create table IF NOT EXISTS project.user
+create table IF NOT EXISTS project.application_user
 (
     id numeric not null
-        constraint user_pkey
+        constraint application_user_pkey
             primary key,
     name varchar(50) not null,
     password varchar not null,
-    userType varchar(10)
+    application_user_type varchar(10)
 );
 
 create index IF NOT EXISTS name_index
-    on project.user (name);
+    on project.application_user (name);
 
 DROP TABLE IF EXISTS project.house_type CASCADE;
 
@@ -84,14 +84,6 @@ create table IF NOT EXISTS project.planning
     images varchar(150)
 );
 
-DROP TABLE IF EXISTS project.house_planning CASCADE;
-
-create table IF NOT EXISTS project.house_planning
-(
-    house_id numeric not null references project.house(id),
-    planning_id numeric not null references project.planning(id)
-);
-
 DROP TABLE IF EXISTS project.favor_type CASCADE;
 
 create table IF NOT EXISTS project.favor_type
@@ -121,9 +113,6 @@ create table IF NOT EXISTS project.favor
     type_of_time_limit varchar(10)
 );
 
-create index IF NOT EXISTS name_index
-    on project.user (name);
-
 DROP TABLE IF EXISTS project.plot CASCADE;
 
 create table IF NOT EXISTS project.plot
@@ -139,29 +128,33 @@ create table IF NOT EXISTS project.plot
     water bool
 );
 
-create sequence IF NOT EXISTS project.user_seq;
+create sequence IF NOT EXISTS project.assortment_seq;
 
-alter sequence project.user_seq owned by project.user.id;
+alter sequence project.assortment_seq owned by project.assortment.id RESTART WITH 10;
+
+create sequence IF NOT EXISTS project.application_user_seq;
+
+alter sequence project.application_user_seq owned by project.application_user.id RESTART WITH 4;
 
 create sequence IF NOT EXISTS project.house_type_seq;
 
-alter sequence project.house_type_seq owned by project.house_type.id;
+alter sequence project.house_type_seq owned by project.house_type.id RESTART WITH 4;
 
 create sequence IF NOT EXISTS project.material_type_seq;
 
-alter sequence project.material_type_seq owned by project.material_type.id;
+alter sequence project.material_type_seq owned by project.material_type.id RESTART WITH 4;
 
 create sequence IF NOT EXISTS project.planning_seq;
 
-alter sequence project.planning_seq owned by project.planning.id;
+alter sequence project.planning_seq owned by project.planning.id RESTART WITH 4;
 
 create sequence IF NOT EXISTS project.favor_type_seq;
 
-alter sequence project.favor_type_seq owned by project.favor_type.id;
+alter sequence project.favor_type_seq owned by project.favor_type.id RESTART WITH 4;
 
-INSERT INTO project.user(id, name, password, userType) VALUES (1, 'TestUser1', 'TestPassword1', 'ROLE_USER');
-INSERT INTO project.user(id, name, password, userType) VALUES (2, 'TestUser2', 'TestPassword2', 'ROLE_USER');
-INSERT INTO project.user(id, name, password, userType) VALUES (3, 'TestUser3', 'TestPassword3', 'ROLE_ADMIN');
+INSERT INTO project.application_user(id, name, password, application_user_type) VALUES (1, 'TestUser1', 'TestPassword1', 'ROLE_USER');
+INSERT INTO project.application_user(id, name, password, application_user_type) VALUES (2, 'TestUser2', 'TestPassword2', 'ROLE_USER');
+INSERT INTO project.application_user(id, name, password, application_user_type) VALUES (3, 'TestUser3', 'TestPassword3', 'ROLE_ADMIN');
 
 INSERT INTO project.assortment(id, name, description, images, status)
 VALUES
@@ -199,14 +192,6 @@ VALUES
     (1, 'Компактная', 'someFolder'),
     (2, 'Просторная', 'someFolder'),
     (3, 'Коробка', 'someFolder');
-
-INSERT INTO project.house_planning(house_id, planning_id)
-VALUES
-    (1, 1),
-    (2, 3),
-    (1, 3),
-    (3, 2),
-    (3, 1);
 
 INSERT INTO project.favor_type(id, name)
 VALUES

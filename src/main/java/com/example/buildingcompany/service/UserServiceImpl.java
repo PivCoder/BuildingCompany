@@ -23,6 +23,7 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
+    //TODO, неправильно работает распределение id по сущностям во всех сущностях
     @Override
     public User addUser(User user) {
         return userRepository.save(user);

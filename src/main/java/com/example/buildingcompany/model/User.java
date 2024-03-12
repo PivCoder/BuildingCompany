@@ -9,8 +9,8 @@ import lombok.Setter;
 
 import java.util.Objects;
 
-@Entity(name = "user")
-@Table(schema = "project", name = "user")
+@Entity(name = "application_user")
+@Table(schema = "project", name = "application_user")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,7 +24,7 @@ public class User extends AbstractEntity{
 
     @Enumerated(EnumType.STRING)
     @Column
-    private UserType userType;
+    private UserType applicationUserType;
 
     @Override
     public boolean equals(Object o) {
@@ -44,7 +44,7 @@ public class User extends AbstractEntity{
         return "User{" +
                 "name='" + name + '\'' +
                 ", password='" + password + '\'' +
-                ", userType=" + userType +
+                ", applicationUserType=" + applicationUserType +
                 '}';
     }
 }

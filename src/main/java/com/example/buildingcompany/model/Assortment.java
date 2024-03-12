@@ -16,7 +16,11 @@ import java.util.Objects;
 @AllArgsConstructor 
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Assortment extends AbstractEntity{
+public abstract class Assortment {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", updatable = false, nullable = false)
+    private long id;
 
     @Column
     private String name;

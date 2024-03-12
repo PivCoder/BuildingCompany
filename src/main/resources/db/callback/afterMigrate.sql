@@ -1,4 +1,4 @@
-SELECT * FROM project.user;
+SELECT * FROM project.application_user;
 SELECT * FROM project.house_type;
 SELECT * FROM project.material_type;
 SELECT * FROM project.house;

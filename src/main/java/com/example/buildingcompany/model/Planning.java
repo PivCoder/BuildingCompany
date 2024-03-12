@@ -1,14 +1,14 @@
 package com.example.buildingcompany.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Objects;
-import java.util.Set;
 
 @Entity(name = "planning")
 @Table(schema = "project", name = "planning")
@@ -22,13 +22,6 @@ public class Planning extends AbstractEntity{
 
     @Column
     private String images;
-
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "house_planning",
-            joinColumns = @JoinColumn(name = "planning_id"),
-            inverseJoinColumns = @JoinColumn(name = "house_id"))
-    private Set<House> houses;
 
     @Override
     public boolean equals(Object o) {

@@ -11,7 +11,7 @@ import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 
-//TODO доделать методы
+//TODO доделать методы во всех сервисах
 @Service
 @Validated
 @Transactional
