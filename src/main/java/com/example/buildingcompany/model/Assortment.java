@@ -16,11 +16,8 @@ import java.util.Objects;
 @AllArgsConstructor 
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Assortment {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", updatable = false, nullable = false)
-    private long id;
+@SequenceGenerator(name = "default_gen", sequenceName = "assortment_seq", allocationSize = 1)
+public abstract class Assortment extends AbstractEntity{
 
     @Column
     private String name;
@@ -52,6 +49,7 @@ public abstract class Assortment {
     @Override
     public String toString() {
         return "Assortment{" +
+                "id='" + getId() + '\'' +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", images='" + images + '\'' +

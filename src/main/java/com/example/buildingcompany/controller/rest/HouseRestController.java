@@ -1,7 +1,7 @@
 package com.example.buildingcompany.controller.rest;
 
 import com.example.buildingcompany.model.House;
-import com.example.buildingcompany.service.api.HouseService;
+import com.example.buildingcompany.service.HouseServiceImpl;
 import jakarta.validation.constraints.Positive;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,10 +13,10 @@ import java.util.List;
 @RestController
 @RequestMapping("rest/house")
 public class HouseRestController {
-    private HouseService houseService;
+    private HouseServiceImpl houseService;
 
     @Autowired
-    public void setService(HouseService houseService) {
+    public void setService(HouseServiceImpl houseService) {
 
         this.houseService = houseService;
     }
@@ -34,12 +34,12 @@ public class HouseRestController {
 
     @PostMapping("/create")
     public ResponseEntity<House> createHouse(@RequestBody House newHouse){
-        return new ResponseEntity<>(houseService.addHouse(newHouse), HttpStatus.CREATED);
+        return new ResponseEntity<>(houseService.saveHouse(newHouse), HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
     public ResponseEntity<House> updateHouse(@RequestBody House house){
-        houseService.editHouse(house);
+        houseService.updateHouse(house);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

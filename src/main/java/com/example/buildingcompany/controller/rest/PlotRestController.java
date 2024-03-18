@@ -1,7 +1,7 @@
 package com.example.buildingcompany.controller.rest;
 
 import com.example.buildingcompany.model.Plot;
-import com.example.buildingcompany.service.api.PlotService;
+import com.example.buildingcompany.service.PlotServiceImpl;
 import jakarta.validation.constraints.Positive;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,10 +13,10 @@ import java.util.List;
 @RestController
 @RequestMapping("rest/plot")
 public class PlotRestController {
-    private PlotService plotService;
+    private PlotServiceImpl plotService;
 
     @Autowired
-    public void setService(PlotService plotService) {
+    public void setService(PlotServiceImpl plotService) {
 
         this.plotService = plotService;
     }
@@ -34,12 +34,12 @@ public class PlotRestController {
 
     @PostMapping("/create")
     public ResponseEntity<Plot> createPlot(@RequestBody Plot newPlot){
-        return new ResponseEntity<>(plotService.addPlot(newPlot), HttpStatus.CREATED);
+        return new ResponseEntity<>(plotService.savePlot(newPlot), HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
     public ResponseEntity<Plot> updatePlot(@RequestBody Plot plot){
-        plotService.editPlot(plot);
+        plotService.updatePlot(plot);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

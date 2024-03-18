@@ -1,7 +1,7 @@
 package com.example.buildingcompany.controller.rest;
 
 import com.example.buildingcompany.model.Assortment;
-import com.example.buildingcompany.service.api.AssortmentService;
+import com.example.buildingcompany.service.AssortmentServiceImpl;
 import jakarta.validation.constraints.Positive;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,10 +13,10 @@ import java.util.List;
 @RestController
 @RequestMapping("rest/assortment")
 public class AssortmentRestController {
-    private AssortmentService assortmentService;
+    private AssortmentServiceImpl assortmentService;
 
     @Autowired
-    public void setService(AssortmentService assortmentService) {
+    public void setService(AssortmentServiceImpl assortmentService) {
 
         this.assortmentService = assortmentService;
     }
@@ -34,12 +34,12 @@ public class AssortmentRestController {
 
     @PostMapping("/create")
     public ResponseEntity<Assortment> createAssortment(@RequestBody Assortment newAssortment){
-        return new ResponseEntity<>(assortmentService.addAssortment(newAssortment), HttpStatus.CREATED);
+        return new ResponseEntity<>(assortmentService.saveAssortment(newAssortment), HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
     public ResponseEntity<Assortment> updateAssortment(@RequestBody Assortment assortment){
-        assortmentService.editAssortment(assortment);
+        assortmentService.updateAssortment(assortment);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

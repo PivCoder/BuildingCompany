@@ -15,6 +15,7 @@ import java.util.Objects;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@SequenceGenerator(name = "default_gen", sequenceName = "application_user_seq", allocationSize = 1)
 public class User extends AbstractEntity{
     @Column
     private String name;
@@ -42,6 +43,7 @@ public class User extends AbstractEntity{
     @Override
     public String toString() {
         return "User{" +
+                "id='" + getId() + '\'' +
                 "name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 ", applicationUserType=" + applicationUserType +

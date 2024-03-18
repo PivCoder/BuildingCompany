@@ -1,7 +1,7 @@
 package com.example.buildingcompany.controller.rest;
 
 import com.example.buildingcompany.model.Favor;
-import com.example.buildingcompany.service.api.FavorService;
+import com.example.buildingcompany.service.FavorServiceImpl;
 import jakarta.validation.constraints.Positive;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,10 +13,10 @@ import java.util.List;
 @RestController
 @RequestMapping("rest/favor")
 public class FavorRestController {
-    private FavorService favorService;
+    private FavorServiceImpl favorService;
 
     @Autowired
-    public void setService(FavorService favorService) {
+    public void setService(FavorServiceImpl favorService) {
 
         this.favorService = favorService;
     }
@@ -34,12 +34,12 @@ public class FavorRestController {
 
     @PostMapping("/create")
     public ResponseEntity<Favor> createFavor(@RequestBody Favor newFavor){
-        return new ResponseEntity<>(favorService.addFavor(newFavor), HttpStatus.CREATED);
+        return new ResponseEntity<>(favorService.saveFavor(newFavor), HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
     public ResponseEntity<Favor> updateFavor(@RequestBody Favor favor){
-        favorService.editFavor(favor);
+        favorService.updateFavor(favor);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

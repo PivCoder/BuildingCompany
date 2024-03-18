@@ -1,11 +1,13 @@
 package com.example.buildingcompany.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity(name = "house_type")
@@ -14,9 +16,14 @@ import java.util.Objects;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@SequenceGenerator(name = "default_gen", sequenceName = "house_type_seq", allocationSize = 1)
 public class HouseType extends AbstractEntity{
     @Column
     private String name;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "houseType", cascade = CascadeType.ALL)
+    private List<House> houseList;
 
     @Override
     public boolean equals(Object o) {
@@ -34,6 +41,7 @@ public class HouseType extends AbstractEntity{
     @Override
     public String toString() {
         return "HouseType{" +
+                "id='" + getId() + '\'' +
                 "name='" + name + '\'' +
                 '}';
     }

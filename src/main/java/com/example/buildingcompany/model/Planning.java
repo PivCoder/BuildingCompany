@@ -2,6 +2,7 @@ package com.example.buildingcompany.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,18 +11,21 @@ import lombok.Setter;
 
 import java.util.Objects;
 
+//TODO выяснить и дополнить поля
+
 @Entity(name = "planning")
 @Table(schema = "project", name = "planning")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Planning extends AbstractEntity{
-    @Column
-    private String name;
+public class Planning extends Assortment {
 
     @Column
-    private String images;
+    private double length;
+
+    @Column
+    private double width;
 
     @Override
     public boolean equals(Object o) {
@@ -39,8 +43,9 @@ public class Planning extends AbstractEntity{
     @Override
     public String toString() {
         return "Planning{" +
-                "name='" + name + '\'' +
-                ", images='" + images + '\'' +
+                "id='" + getId() + '\'' +
+                "length=" + length +
+                ", width=" + width +
                 '}';
     }
 }

@@ -43,6 +43,7 @@ public class Plot extends Assortment{
     @Override
     public String toString() {
         return "Plot{" +
+                "id='" + getId() + '\'' +
                 "address='" + address + '\'' +
                 ", size=" + size +
                 ", electricity=" + electricity +

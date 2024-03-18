@@ -1,16 +1,13 @@
 package com.example.buildingcompany.model;
 
 import com.example.buildingcompany.model.enums.PercentageOfReadiness;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity(name = "house")
 @Table(schema = "project", name = "house")
@@ -28,10 +25,10 @@ public class House extends Assortment{
     @Column
     private int numberOfFloors;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private HouseType houseType;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private MaterialType materialType;
 
     @Enumerated(EnumType.STRING)
@@ -54,6 +51,7 @@ public class House extends Assortment{
     @Override
     public String toString() {
         return "House{" +
+                "id='" + getId() + '\'' +
                 "area=" + area +
                 ", heatedArea=" + heatedArea +
                 ", numberOfFloors=" + numberOfFloors +

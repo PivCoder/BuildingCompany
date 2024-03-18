@@ -3,9 +3,9 @@ package com.example.buildingcompany.model;
 import jakarta.persistence.*;
 
 @MappedSuperclass
-abstract class AbstractEntity {
+public abstract class AbstractEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "default_gen")
     @Column(name = "id", updatable = false, nullable = false)
     private long id;
 

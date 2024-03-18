@@ -1,7 +1,7 @@
 package com.example.buildingcompany.controller.rest;
 
 import com.example.buildingcompany.model.User;
-import com.example.buildingcompany.service.api.UserService;
+import com.example.buildingcompany.service.UserServiceImpl;
 import jakarta.validation.constraints.Positive;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,10 +13,10 @@ import java.util.List;
 @RestController
 @RequestMapping("rest/user")
 public class UserRestController {
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @Autowired
-    public void setService(UserService userService) {
+    public void setService(UserServiceImpl userService) {
 
         this.userService = userService;
     }
@@ -34,12 +34,12 @@ public class UserRestController {
 
     @PostMapping("/create")
     public ResponseEntity<User> createUser(@RequestBody User newUser){
-            return new ResponseEntity<>(userService.addUser(newUser), HttpStatus.CREATED);
+            return new ResponseEntity<>(userService.saveUser(newUser), HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
     public ResponseEntity<User> updateUser(@RequestBody User user){
-        userService.editUser(user);
+        userService.updateUser(user);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

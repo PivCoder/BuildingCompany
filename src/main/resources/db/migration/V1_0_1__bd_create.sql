@@ -4,8 +4,7 @@ DROP TABLE IF EXISTS project.assortment CASCADE;
 
 create table IF NOT EXISTS project.assortment
 (
-    id numeric not null
-        constraint assortment_pkey
+    id bigint not null
             primary key,
     name varchar(100) not null,
     description text,
@@ -21,8 +20,7 @@ DROP TABLE IF EXISTS project.application_user CASCADE;
 
 create table IF NOT EXISTS project.application_user
 (
-    id numeric not null
-        constraint application_user_pkey
+    id bigint not null
             primary key,
     name varchar(50) not null,
     password varchar not null,
@@ -36,8 +34,7 @@ DROP TABLE IF EXISTS project.house_type CASCADE;
 
 create table IF NOT EXISTS project.house_type
 (
-    id numeric not null
-        constraint house_type_pkey
+    id bigint not null
             primary key,
     name varchar(50) not null
 );
@@ -46,8 +43,7 @@ DROP TABLE IF EXISTS project.material_type CASCADE;
 
 create table IF NOT EXISTS project.material_type
 (
-    id numeric not null
-        constraint material_type_pkey
+    id bigint not null
             primary key,
     name varchar(50) not null
 );
@@ -56,17 +52,14 @@ DROP TABLE IF EXISTS project.house CASCADE;
 
 create table IF NOT EXISTS project.house
 (
-    id numeric not null
-        constraint house_pkey
+    id bigint not null
             primary key
-        constraint house_assortment_id_fkey
             references project.assortment,
-    house_type_id numeric
-        constraint house_type_id_fkey
-            references project.house_type(id) not null,
-    material_type_id numeric
+    house_type_id bigint
+        references project.house_type not null,
+    material_type_id bigint
         constraint material_type_id_fkey
-            references project.material_type(id) not null,
+            references project.material_type not null,
     area real not null,
     heated_area real,
     number_of_floors int not null,
@@ -77,19 +70,17 @@ DROP TABLE IF EXISTS project.planning CASCADE;
 
 create table IF NOT EXISTS project.planning
 (
-    id numeric not null
-        constraint planning_pkey
-            primary key,
-    name varchar(50) not null,
-    images varchar(150)
+    id bigint not null
+            primary key references project.assortment,
+    length real not null,
+    width real not null
 );
 
 DROP TABLE IF EXISTS project.favor_type CASCADE;
 
 create table IF NOT EXISTS project.favor_type
 (
-    id numeric not null
-        constraint favor_type_pkey
+    id bigint not null
             primary key,
     name varchar(150) not null
 );
@@ -98,14 +89,12 @@ DROP TABLE IF EXISTS project.favor CASCADE;
 
 create table IF NOT EXISTS project.favor
 (
-    id numeric not null
-        constraint favor_pkey
+    id bigint not null
             primary key
         constraint favor_assortment_id_fkey
             references project.assortment,
-    favor_type_id numeric
-        constraint favor_type_id_fkey
-            references project.favor_type not null,
+    favor_type_id bigint
+        references project.favor_type not null,
     area real,
     industrial bool,
     price real not null ,
@@ -117,8 +106,7 @@ DROP TABLE IF EXISTS project.plot CASCADE;
 
 create table IF NOT EXISTS project.plot
 (
-    id numeric not null
-        constraint plot_pkey
+    id bigint not null
             primary key
         constraint plot_assortment_id_fkey
             references project.assortment,
@@ -128,29 +116,15 @@ create table IF NOT EXISTS project.plot
     water bool
 );
 
-create sequence IF NOT EXISTS project.assortment_seq;
+create sequence IF NOT EXISTS project.application_user_seq start with 4 increment by 1;
 
-alter sequence project.assortment_seq owned by project.assortment.id RESTART WITH 10;
+create sequence IF NOT EXISTS project.assortment_seq start with 13 increment by 1;
 
-create sequence IF NOT EXISTS project.application_user_seq;
+create sequence IF NOT EXISTS project.house_type_seq start with 4 increment by 1;
 
-alter sequence project.application_user_seq owned by project.application_user.id RESTART WITH 4;
+create sequence IF NOT EXISTS project.material_type_seq start with 4 increment by 1;
 
-create sequence IF NOT EXISTS project.house_type_seq;
-
-alter sequence project.house_type_seq owned by project.house_type.id RESTART WITH 4;
-
-create sequence IF NOT EXISTS project.material_type_seq;
-
-alter sequence project.material_type_seq owned by project.material_type.id RESTART WITH 4;
-
-create sequence IF NOT EXISTS project.planning_seq;
-
-alter sequence project.planning_seq owned by project.planning.id RESTART WITH 4;
-
-create sequence IF NOT EXISTS project.favor_type_seq;
-
-alter sequence project.favor_type_seq owned by project.favor_type.id RESTART WITH 4;
+create sequence IF NOT EXISTS project.favor_type_seq start with 4 increment by 1;
 
 INSERT INTO project.application_user(id, name, password, application_user_type) VALUES (1, 'TestUser1', 'TestPassword1', 'ROLE_USER');
 INSERT INTO project.application_user(id, name, password, application_user_type) VALUES (2, 'TestUser2', 'TestPassword2', 'ROLE_USER');
@@ -161,12 +135,15 @@ VALUES
     (1, 'Дом 1', 'Описание дома...', 'someFolder', 'WAITING'),
     (2, 'Дом 2', 'Описание дома...', 'someFolder', 'WAITING'),
     (3, 'Дом 3', 'Описание дома...', 'someFolder', 'WAITING'),
-    (4, 'Фасадная отделка 1', 'Описание фасадной отделки...', 'someFolder', 'WAITING'),
-    (5, 'Фасадная отделка 2', 'Описание фасадной отделки...', 'someFolder', 'WAITING'),
-    (6, 'Фасадная отделка 3', 'Описание фасадной отделки...', 'someFolder', 'APPROVED'),
-    (7, 'Участок 1', 'Описание участка...', 'someFolder', 'REJECTED'),
-    (8, 'Участок 2', 'Описание участка...', 'someFolder', 'REJECTED'),
-    (9, 'Участок 3', 'Описание участка...', 'someFolder', 'REJECTED');
+    (4, 'Компактная', 'Описание планировки...', 'someFolder', 'WAITING'),
+    (5, 'Просторная', 'Описание планировки...', 'someFolder', 'WAITING'),
+    (6, 'Коробка', 'Описание планировки...', 'someFolder', 'WAITING'),
+    (7, 'Фасадная отделка 1', 'Описание фасадной отделки...', 'someFolder', 'WAITING'),
+    (8, 'Фасадная отделка 2', 'Описание фасадной отделки...', 'someFolder', 'WAITING'),
+    (9, 'Фасадная отделка 3', 'Описание фасадной отделки...', 'someFolder', 'APPROVED'),
+    (10, 'Участок 1', 'Описание участка...', 'someFolder', 'REJECTED'),
+    (11, 'Участок 2', 'Описание участка...', 'someFolder', 'REJECTED'),
+    (12, 'Участок 3', 'Описание участка...', 'someFolder', 'REJECTED');
 
 INSERT INTO project.house_type(id, name)
 VALUES
@@ -187,11 +164,11 @@ VALUES
     (2, 2, 2, 127.25, 100.78, 2, 'PERCENT_0'),
     (3, 3, 3, 182.12, 100.53, 3, 'PERCENT_100');
 
-INSERT INTO project.planning(id, name, images)
+INSERT INTO project.planning(id, length, width)
 VALUES
-    (1, 'Компактная', 'someFolder'),
-    (2, 'Просторная', 'someFolder'),
-    (3, 'Коробка', 'someFolder');
+    (4, 150.0, 250.25),
+    (5, 120, 375.15),
+    (6, 170, 185.2);
 
 INSERT INTO project.favor_type(id, name)
 VALUES
@@ -201,12 +178,12 @@ VALUES
 
 INSERT INTO project.favor(id, favor_type_id, area, industrial, price, number_of_time_units, type_of_time_limit)
 VALUES
-    (4, 1, 100, true, 1250000, 3, 'YEAR'),
-    (5, 2, 85, false, 15000, 2, 'DAY'),
-    (6, 3, 10, true, 15000, 1, 'MONTH');
+    (7, 1, 100, true, 1250000, 3, 'YEAR'),
+    (8, 2, 85, false, 15000, 2, 'DAY'),
+    (9, 3, 10, true, 15000, 1, 'MONTH');
 
 INSERT INTO project.plot(id, address, size, electricity, water)
 VALUES
-    (7, 'ул. Ленина, 12', 1000, true, true),
-    (8, 'д. Садовая, 1', 2000, false, true),
-    (9, 'ул. Озерная, 10', 1500, true, false);
+    (10, 'ул. Ленина, 12', 1000, true, true),
+    (11, 'д. Садовая, 1', 2000, false, true),
+    (12, 'ул. Озерная, 10', 1500, true, false);

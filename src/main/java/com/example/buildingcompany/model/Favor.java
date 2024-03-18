@@ -17,7 +17,7 @@ import java.util.Objects;
 @NoArgsConstructor
 public class Favor extends Assortment {
     @Column
-    private String area;
+    private double area;
 
     @Column
     private boolean industrial;
@@ -28,7 +28,7 @@ public class Favor extends Assortment {
     @Column
     private int numberOfTimeUnits;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private FavorType favorType;
 
     @Enumerated(EnumType.STRING)
@@ -51,6 +51,7 @@ public class Favor extends Assortment {
     @Override
     public String toString() {
         return "Favor{" +
+                "id='" + getId() + '\'' +
                 "area='" + area + '\'' +
                 ", industrial=" + industrial +
                 ", price=" + price +
