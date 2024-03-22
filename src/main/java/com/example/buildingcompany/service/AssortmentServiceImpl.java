@@ -9,7 +9,7 @@ import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 
-//TODO доделать методы во всех сервисах
+//TODO доделать методы во всех сервисах под DTO
 @Service
 @Validated
 @RequiredArgsConstructor
@@ -26,7 +26,7 @@ public class AssortmentServiceImpl {
     }
 
     public Assortment getAssortmentById(long id) {
-        return assortmentRepository.findById(id).orElseThrow(() -> new ElementNotFoundException(" "));
+        return assortmentRepository.findById(id).orElseThrow(() -> new ElementNotFoundException("id = " + id));
     }
 
     public Assortment updateAssortment(Assortment assortment) {

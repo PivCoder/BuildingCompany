@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalControllerException {
 
     @ExceptionHandler(ElementNotFoundException.class)
-    public ResponseEntity<String> handleElementNotFoundException(ElementNotFoundException ex)
-    {
+    public ResponseEntity<String> handleElementNotFoundException(ElementNotFoundException ex) {
         // Log the exception here if desired
         String errorMessage = "Запрашиваемый элемент не найден:" + ex.getMessage();
         return new ResponseEntity<>(errorMessage, HttpStatus.NOT_FOUND);
