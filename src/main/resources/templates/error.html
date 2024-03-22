@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ошибка</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff0000;
+        }
+
+        img {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<img src="error_image.png" alt="Ошибка">
+<h1>Ошибка</h1>
+<p th:text="${errorMessage}"></p>
+</body>
+</html>
