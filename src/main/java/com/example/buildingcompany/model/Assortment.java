@@ -1,23 +1,32 @@
 package com.example.buildingcompany.model;
 
 import com.example.buildingcompany.model.enums.Status;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.Objects;
+import lombok.ToString;
 
 @Entity(name = "assortment")
 @Table(schema = "project", name = "assortment")
 @Getter
 @Setter
-@AllArgsConstructor 
+@AllArgsConstructor
 @NoArgsConstructor
+@ToString
+@EqualsAndHashCode(callSuper = true)
 @Inheritance(strategy = InheritanceType.JOINED)
 @SequenceGenerator(name = "default_gen", sequenceName = "assortment_seq", allocationSize = 1)
-public abstract class Assortment extends AbstractEntity{
+public abstract class Assortment extends AbstractEntity {
 
     @Column
     private String name;
@@ -32,28 +41,4 @@ public abstract class Assortment extends AbstractEntity{
     @Enumerated(EnumType.STRING)
     @Column
     private Status status;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Assortment that = (Assortment) o;
-        return Objects.equals(getId(), that.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
-    }
-
-    @Override
-    public String toString() {
-        return "Assortment{" +
-                "id='" + getId() + '\'' +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", images='" + images + '\'' +
-                ", status=" + status +
-                '}';
-    }
 }
