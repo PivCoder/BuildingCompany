@@ -1,48 +1,37 @@
 package com.example.buildingcompany.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
-import java.util.Objects;
 
 @Entity(name = "house_type")
 @Table(schema = "project", name = "house_type")
 @Getter
 @Setter
+@ToString
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @SequenceGenerator(name = "default_gen", sequenceName = "house_type_seq", allocationSize = 1)
-public class HouseType extends AbstractEntity{
+public class HouseType extends AbstractEntity {
     @Column
     private String name;
 
     @JsonIgnore
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "houseType", cascade = CascadeType.ALL)
     private List<House> houseList;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        HouseType that = (HouseType) o;
-        return Objects.equals(getId(), that.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
-    }
-
-    @Override
-    public String toString() {
-        return "HouseType{" +
-                "id='" + getId() + '\'' +
-                "name='" + name + '\'' +
-                '}';
-    }
 }

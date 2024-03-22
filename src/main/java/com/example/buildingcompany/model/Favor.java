@@ -1,18 +1,26 @@
 package com.example.buildingcompany.model;
 
 import com.example.buildingcompany.model.enums.TypeOfTimeLimit;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.Objects;
+import lombok.ToString;
 
 @Entity(name = "favor")
 @Table(schema = "project", name = "favor")
 @Getter
 @Setter
+@ToString
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
 public class Favor extends Assortment {
@@ -28,35 +36,12 @@ public class Favor extends Assortment {
     @Column
     private int numberOfTimeUnits;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     private FavorType favorType;
 
     @Enumerated(EnumType.STRING)
     @Column
     private TypeOfTimeLimit typeOfTimeLimit;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Favor that = (Favor) o;
-        return Objects.equals(getId(), that.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
-    }
-
-    @Override
-    public String toString() {
-        return "Favor{" +
-                "id='" + getId() + '\'' +
-                "area='" + area + '\'' +
-                ", industrial=" + industrial +
-                ", price=" + price +
-                ", numberOfTimeUnits=" + numberOfTimeUnits +
-                ", typeOfTimeLimit=" + typeOfTimeLimit +
-                '}';
-    }
 }
