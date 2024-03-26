@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 //TODO доделать методы во всех сервисах под DTO
 @Service
@@ -26,7 +27,7 @@ public class AssortmentServiceImpl {
     }
 
     public Assortment getAssortmentById(long id) {
-        return assortmentRepository.findById(id).orElseThrow(() -> new ElementNotFoundException("id = " + id));
+        return assortmentRepository.findById(id).orElseThrow(() -> new NoSuchElementException("id = " + id));
     }
 
     public Assortment updateAssortment(Assortment assortment) {
