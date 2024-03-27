@@ -73,7 +73,8 @@ create table IF NOT EXISTS project.planning
     id bigint not null
             primary key references project.assortment,
     length real not null,
-    width real not null
+    width real not null,
+    number_of_floors int not null
 );
 
 DROP TABLE IF EXISTS project.favor_type CASCADE;
@@ -97,7 +98,7 @@ create table IF NOT EXISTS project.favor
         references project.favor_type not null,
     area real,
     industrial bool,
-    price real not null ,
+    price real not null,
     number_of_time_units int,
     type_of_time_limit varchar(10)
 );
@@ -113,7 +114,8 @@ create table IF NOT EXISTS project.plot
     address varchar(150) not null,
     size real not null,
     electricity bool,
-    water bool
+    water bool,
+    price real not null
 );
 
 create sequence IF NOT EXISTS project.application_user_seq start with 4 increment by 1;
@@ -164,11 +166,11 @@ VALUES
     (2, 2, 2, 127.25, 100.78, 2, 'PERCENT_0'),
     (3, 3, 3, 182.12, 100.53, 3, 'PERCENT_100');
 
-INSERT INTO project.planning(id, length, width)
+INSERT INTO project.planning(id, length, width, number_of_floors)
 VALUES
-    (4, 150.0, 250.25),
-    (5, 120, 375.15),
-    (6, 170, 185.2);
+    (4, 150.0, 250.25, 1),
+    (5, 120, 375.15, 2),
+    (6, 170, 185.2, 3);
 
 INSERT INTO project.favor_type(id, name)
 VALUES
@@ -182,8 +184,8 @@ VALUES
     (8, 2, 85, false, 15000, 2, 'DAY'),
     (9, 3, 10, true, 15000, 1, 'MONTH');
 
-INSERT INTO project.plot(id, address, size, electricity, water)
+INSERT INTO project.plot(id, address, size, electricity, water, price)
 VALUES
-    (10, 'ул. Ленина, 12', 1000, true, true),
-    (11, 'д. Садовая, 1', 2000, false, true),
-    (12, 'ул. Озерная, 10', 1500, true, false);
+    (10, 'ул. Ленина, 12', 1000, true, true, 1000025),
+    (11, 'д. Садовая, 1', 2000, false, true, 1520000),
+    (12, 'ул. Озерная, 10', 1500, true, false, 1254795.21);

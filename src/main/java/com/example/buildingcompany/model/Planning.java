@@ -27,4 +27,7 @@ public class Planning extends Assortment {
 
     @Column
     private double width;
+
+    @Column
+    private int numberOfFloors;
 }

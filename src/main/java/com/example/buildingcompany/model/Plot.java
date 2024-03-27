@@ -30,4 +30,7 @@ public class Plot extends Assortment {
 
     @Column
     private boolean water;
+
+    @Column
+    private double price;
 }
