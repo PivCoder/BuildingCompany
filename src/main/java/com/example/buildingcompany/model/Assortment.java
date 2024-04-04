@@ -38,6 +38,9 @@ public abstract class Assortment extends AbstractEntity {
     @Column
     private String images;
 
+    @Column
+    private String image;
+
     @Enumerated(EnumType.STRING)
     @Column
     private Status status;

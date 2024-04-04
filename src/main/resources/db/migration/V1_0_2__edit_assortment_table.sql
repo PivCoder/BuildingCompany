@@ -1,0 +1,1 @@
+alter table project.assortment add image varchar(250) NOT NULL default ''

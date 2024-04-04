@@ -1,6 +1,5 @@
 package com.example.buildingcompany.service;
 
-import com.example.buildingcompany.exception.ElementNotFoundException;
 import com.example.buildingcompany.model.Assortment;
 import com.example.buildingcompany.repository.AssortmentRepository;
 import lombok.RequiredArgsConstructor;

@@ -12,6 +12,9 @@ public class HouseAllDto {
     @NotNull
     Long id;
 
+    @NotNull
+    HouseTypeDto houseType;
+
     @NotBlank
     String name;
 

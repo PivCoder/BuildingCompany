@@ -12,6 +12,9 @@ public class HouseSlimDto {
     @NotNull
     Long id;
 
+    @NotNull
+    HouseTypeDto houseType;
+
     @NotBlank
     String name;
 
