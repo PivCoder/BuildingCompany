@@ -3,9 +3,10 @@ package com.example.buildingcompany.mapper;
 import com.example.buildingcompany.dto.PlotAllDto;
 import com.example.buildingcompany.dto.PlotSlimDto;
 import com.example.buildingcompany.model.Plot;
+import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public abstract class PlotMapper {
 
     public abstract PlotAllDto toPlotAllDto(Plot plot);

@@ -3,9 +3,10 @@ package com.example.buildingcompany.mapper;
 import com.example.buildingcompany.dto.HouseAllDto;
 import com.example.buildingcompany.dto.HouseSlimDto;
 import com.example.buildingcompany.model.House;
+import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring", uses = {HouseTypeMapper.class, MaterialTypeMapper.class})
+@Mapper(componentModel = "spring", uses = {HouseTypeMapper.class, MaterialTypeMapper.class}, injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public abstract class HouseMapper {
 
     public abstract HouseAllDto toHouseAllDto(House house);

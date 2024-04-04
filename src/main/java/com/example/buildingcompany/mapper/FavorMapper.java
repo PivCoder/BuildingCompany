@@ -3,9 +3,10 @@ package com.example.buildingcompany.mapper;
 import com.example.buildingcompany.dto.FavorAllDto;
 import com.example.buildingcompany.dto.FavorSlimDto;
 import com.example.buildingcompany.model.Favor;
+import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring", uses = FavorTypeMapper.class)
+@Mapper(componentModel = "spring", uses = FavorTypeMapper.class, injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public abstract class FavorMapper {
 
     public abstract FavorAllDto toFavorAllDto(Favor favor);
