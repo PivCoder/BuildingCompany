@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 //TODO описать данный контроллер
 @Controller
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AssortmentController {
     @GetMapping("/assortment")
     public String showAssortment() {
