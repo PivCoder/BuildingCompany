@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000/", maxAge = 3600)
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("rest/assortment")
 public class AssortmentRestController {
     private AssortmentServiceImpl assortmentService;
