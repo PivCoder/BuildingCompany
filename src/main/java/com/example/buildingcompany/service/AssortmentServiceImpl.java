@@ -17,20 +17,12 @@ public class AssortmentServiceImpl {
 
     private final AssortmentRepository assortmentRepository;
 
-    public Assortment saveAssortment(Assortment assortment) {
-        return assortmentRepository.save(assortment);
-    }
-
     public void deleteAssortment(long id) {
         assortmentRepository.deleteById(id);
     }
 
     public Assortment getAssortmentById(long id) {
         return assortmentRepository.findById(id).orElseThrow(() -> new NoSuchElementException("id = " + id));
-    }
-
-    public Assortment updateAssortment(Assortment assortment) {
-        return assortmentRepository.save(assortment);
     }
 
     public List<Assortment> getAllAssortment() {

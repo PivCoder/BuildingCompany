@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AssortmentController {
     @GetMapping("/assortment")
-    public String showAssortment(){
+    public String showAssortment() {
         return "assortment";
     }
 
