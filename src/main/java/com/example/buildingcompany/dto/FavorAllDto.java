@@ -10,32 +10,32 @@ import lombok.Data;
 public class FavorAllDto {
     @Positive
     @NotNull
-    Long id;
+    private Long id;
 
     @NotNull
-    FavorTypeDto favorType;
+    private FavorTypeDto favorType;
 
     @NotBlank
-    String description;
+    private String description;
 
     @NotBlank
-    String image;
+    private String image;
 
     @Positive
     @NotNull
-    double area;
+    private double area;
 
     @Positive
     @NotNull
-    double price;
+    private double price;
 
     @Positive
     @NotNull
-    int numberOfTimeUnits;
+    private int numberOfTimeUnits;
 
     @NotNull
-    TypeOfTimeLimit typeOfTimeLimit;
+    private TypeOfTimeLimit typeOfTimeLimit;
 
     @NotBlank
-    String images;
+    private String images;
 }

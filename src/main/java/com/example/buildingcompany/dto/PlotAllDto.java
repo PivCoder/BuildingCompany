@@ -7,35 +7,36 @@ import lombok.Data;
 
 @Data
 public class PlotAllDto {
-    @Positive
-    @NotNull
-    Long id;
-
-    @NotBlank
-    String name;
-
-    @NotBlank
-    String address;
-
-    @NotBlank
-    String description;
-
-    @NotBlank
-    String image;
-
-    @NotNull
-    double size;
-
-    @NotNull
-    boolean electricity;
-
-    @NotNull
-    boolean water;
 
     @Positive
     @NotNull
-    double price;
+    private Long id;
 
     @NotBlank
-    String images;
+    private String name;
+
+    @NotBlank
+    private String address;
+
+    @NotBlank
+    private String description;
+
+    @NotBlank
+    private String image;
+
+    @NotNull
+    private double size;
+
+    @NotNull
+    private boolean electricity;
+
+    @NotNull
+    private boolean water;
+
+    @Positive
+    @NotNull
+    private double price;
+
+    @NotBlank
+    private String images;
 }

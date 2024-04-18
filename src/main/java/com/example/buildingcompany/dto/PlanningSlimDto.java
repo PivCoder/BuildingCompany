@@ -10,22 +10,23 @@ import lombok.Data;
 
 @Data
 public class PlanningSlimDto {
-    @Positive
-    @NotNull
-    Long id;
 
     @Positive
     @NotNull
-    double length;
+    private Long id;
 
     @Positive
     @NotNull
-    double width;
+    private double length;
 
     @Positive
     @NotNull
-    int numberOfFloors;
+    private double width;
+
+    @Positive
+    @NotNull
+    private int numberOfFloors;
 
     @NotBlank
-    String image;
+    private String image;
 }

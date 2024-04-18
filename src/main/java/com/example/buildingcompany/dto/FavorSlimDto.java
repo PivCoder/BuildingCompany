@@ -10,14 +10,14 @@ public class FavorSlimDto {
 
     @Positive
     @NotNull
-    Long id;
+    private Long id;
 
     @NotNull
-    FavorTypeDto favorType;
+    private FavorTypeDto favorType;
 
     @NotBlank
-    String description;
+    private String description;
 
     @NotBlank
-    String image;
+    private String image;
 }

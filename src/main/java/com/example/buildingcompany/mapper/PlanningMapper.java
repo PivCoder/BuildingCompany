@@ -5,7 +5,7 @@ import com.example.buildingcompany.model.Planning;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR)
+@Mapper(componentModel = "spring-boot", injectionStrategy = InjectionStrategy.FIELD)
 public abstract class PlanningMapper {
 
     public abstract PlanningSlimDto toPlanningSlimDto(Planning planning);

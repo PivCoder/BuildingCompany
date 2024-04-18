@@ -1,9 +1,13 @@
 package com.example.buildingcompany.dto;
 
+import com.example.buildingcompany.mapper.PlotMapper;
+import com.example.buildingcompany.mapper.PlotMapperImpl;
+import com.example.buildingcompany.model.Plot;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class PlotAllDtoTest {
+    private final PlotMapper plotMapper = new PlotMapperImpl();
 
     @Test
     public void givenPlotAllDto_whenSetFields_thenCorrect() {
@@ -33,16 +37,18 @@ public class PlotAllDtoTest {
         plotAllDto.setPrice(price);
         plotAllDto.setImages(images);
 
+        Plot plot = plotMapper.toPLot(plotAllDto);
+
         // Then
-        Assertions.assertEquals(id, plotAllDto.getId());
-        Assertions.assertEquals(name, plotAllDto.getName());
-        Assertions.assertEquals(address, plotAllDto.getAddress());
-        Assertions.assertEquals(description, plotAllDto.getDescription());
-        Assertions.assertEquals(image, plotAllDto.getImage());
-        Assertions.assertEquals(size, plotAllDto.getSize());
-        Assertions.assertEquals(electricity, plotAllDto.isElectricity());
-        Assertions.assertEquals(water, plotAllDto.isWater());
-        Assertions.assertEquals(price, plotAllDto.getPrice());
-        Assertions.assertEquals(images, plotAllDto.getImages());
+        Assertions.assertEquals(plot.getId(), plotAllDto.getId());
+        Assertions.assertEquals(plot.getName(), plotAllDto.getName());
+        Assertions.assertEquals(plot.getAddress(), plotAllDto.getAddress());
+        Assertions.assertEquals(plot.getDescription(), plotAllDto.getDescription());
+        Assertions.assertEquals(plot.getImage(), plotAllDto.getImage());
+        Assertions.assertEquals(plot.getSize(), plotAllDto.getSize());
+        Assertions.assertEquals(plot.isElectricity(), plotAllDto.isElectricity());
+        Assertions.assertEquals(plot.isWater(), plotAllDto.isWater());
+        Assertions.assertEquals(plot.getPrice(), plotAllDto.getPrice());
+        Assertions.assertEquals(plot.getImages(), plotAllDto.getImages());
     }
 }

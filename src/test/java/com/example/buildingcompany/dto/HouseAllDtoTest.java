@@ -2,20 +2,13 @@ package com.example.buildingcompany.dto;
 
 import com.example.buildingcompany.mapper.HouseMapper;
 import com.example.buildingcompany.mapper.HouseMapperImpl;
-import com.example.buildingcompany.mapper.HouseTypeMapper;
-import com.example.buildingcompany.mapper.HouseTypeMapperImpl;
-import com.example.buildingcompany.mapper.MaterialTypeMapper;
-import com.example.buildingcompany.mapper.MaterialTypeMapperImpl;
 import com.example.buildingcompany.model.House;
 import com.example.buildingcompany.model.enums.PercentageOfReadiness;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class HouseAllDtoTest {
-
-    private final HouseTypeMapper houseTypeMapper = new HouseTypeMapperImpl();
-    private final MaterialTypeMapper materialTypeMapper = new MaterialTypeMapperImpl();
-    private final HouseMapper houseMapper = new HouseMapperImpl(houseTypeMapper, materialTypeMapper);
+    private final HouseMapper houseMapper = new HouseMapperImpl();
 
     @Test
     public void givenHouseAllDtoToHouse_whenMaps_thenCorrect() {
@@ -27,7 +20,7 @@ public class HouseAllDtoTest {
         houseAllDto.setImage("/image");
         houseAllDto.setArea(100.0);
         houseAllDto.setNumberOfFloors(2);
-        houseAllDto.setPercentageOfReadiness(PercentageOfReadiness.FINISHED);
+        houseAllDto.setPercentageOfReadiness(PercentageOfReadiness.PERCENT_100);
         houseAllDto.setImages("/images");
 
         HouseTypeDto houseTypeDto = new HouseTypeDto();
@@ -54,5 +47,29 @@ public class HouseAllDtoTest {
         Assertions.assertEquals(houseAllDto.getImages(), house.getImages());
         Assertions.assertEquals(houseTypeDto.getName(), house.getHouseType().getName());
         Assertions.assertEquals(materialTypeDto.getName(), house.getMaterialType().getName());
+    }
+
+    @Test
+    public void givenHouseSlimDtoToHouse_whenMaps_thenCorrect() {
+        HouseSlimDto houseSlimDto = new HouseSlimDto();
+        houseSlimDto.setId(1L);
+        houseSlimDto.setName("Test House");
+        houseSlimDto.setArea(100.0);
+        houseSlimDto.setDescription("Test description");
+        houseSlimDto.setImage("test.jpg");
+
+        HouseTypeDto houseTypeDto = new HouseTypeDto();
+        houseTypeDto.setId(1L);
+        houseTypeDto.setName("Test House Type");
+        houseSlimDto.setHouseType(houseTypeDto);
+
+        House house = houseMapper.toHouse(houseSlimDto);
+
+        Assertions.assertEquals(houseSlimDto.getId(), house.getId());
+        Assertions.assertEquals(houseSlimDto.getName(), house.getName());
+        Assertions.assertEquals(houseSlimDto.getArea(), house.getArea());
+        Assertions.assertEquals(houseSlimDto.getDescription(), house.getDescription());
+        Assertions.assertEquals(houseSlimDto.getImage(), house.getImage());
+        Assertions.assertEquals(houseTypeDto.getName(), house.getHouseType().getName());
     }
 }

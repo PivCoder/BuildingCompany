@@ -1,9 +1,13 @@
 package com.example.buildingcompany.dto;
 
+import com.example.buildingcompany.mapper.PlotMapper;
+import com.example.buildingcompany.mapper.PlotMapperImpl;
+import com.example.buildingcompany.model.Plot;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class PlotSlimDtoTest {
+    private final PlotMapper plotMapper = new PlotMapperImpl();
 
     @Test
     public void givenPlotSlimDto_whenSetFields_thenCorrect() {
@@ -23,11 +27,13 @@ public class PlotSlimDtoTest {
         plotSlimDto.setDescription(description);
         plotSlimDto.setImage(image);
 
+        Plot plot = plotMapper.toPlot(plotSlimDto);
+
         // Then
-        Assertions.assertEquals(id, plotSlimDto.getId());
-        Assertions.assertEquals(name, plotSlimDto.getName());
-        Assertions.assertEquals(address, plotSlimDto.getAddress());
-        Assertions.assertEquals(description, plotSlimDto.getDescription());
-        Assertions.assertEquals(image, plotSlimDto.getImage());
+        Assertions.assertEquals(plot.getId(), plotSlimDto.getId());
+        Assertions.assertEquals(plot.getName(), plotSlimDto.getName());
+        Assertions.assertEquals(plot.getAddress(), plotSlimDto.getAddress());
+        Assertions.assertEquals(plot.getDescription(), plotSlimDto.getDescription());
+        Assertions.assertEquals(plot.getImage(), plotSlimDto.getImage());
     }
 }

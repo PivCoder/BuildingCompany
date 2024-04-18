@@ -10,34 +10,34 @@ import lombok.Data;
 public class HouseAllDto {
     @Positive
     @NotNull
-    Long id;
+    private Long id;
 
     @NotNull
-    HouseTypeDto houseType;
+    private HouseTypeDto houseType;
 
     @NotBlank
-    String name;
+    private String name;
 
     @NotBlank
-    String description;
+    private String description;
 
     @NotBlank
-    String image;
+    private String image;
 
     @NotNull
-    MaterialTypeDto materialType;
+    private MaterialTypeDto materialType;
 
     @Positive
     @NotNull
-    double area;
+    private double area;
 
     @Positive
     @NotNull
-    int numberOfFloors;
+    private int numberOfFloors;
 
     @NotNull
-    PercentageOfReadiness percentageOfReadiness;
+    private PercentageOfReadiness percentageOfReadiness;
 
     @NotBlank
-    String images;
+    private String images;
 }

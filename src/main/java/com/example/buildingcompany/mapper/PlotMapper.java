@@ -6,7 +6,7 @@ import com.example.buildingcompany.model.Plot;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR)
+@Mapper(componentModel = "spring-boot", injectionStrategy = InjectionStrategy.FIELD)
 public abstract class PlotMapper {
 
     public abstract PlotAllDto toPlotAllDto(Plot plot);

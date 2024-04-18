@@ -5,7 +5,7 @@ import com.example.buildingcompany.model.FavorType;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR)
+@Mapper(componentModel = "spring-boot", injectionStrategy = InjectionStrategy.FIELD)
 public abstract class FavorTypeMapper {
 
     public abstract FavorTypeDto toFavorTypeDto(FavorType favorType);

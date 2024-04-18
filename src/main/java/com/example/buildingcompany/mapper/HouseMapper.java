@@ -6,7 +6,7 @@ import com.example.buildingcompany.model.House;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring", uses = {HouseTypeMapper.class, MaterialTypeMapper.class}, injectionStrategy = InjectionStrategy.CONSTRUCTOR)
+@Mapper(componentModel = "spring-boot", uses = {HouseTypeMapper.class, MaterialTypeMapper.class}, injectionStrategy = InjectionStrategy.FIELD)
 public abstract class HouseMapper {
 
     public abstract HouseAllDto toHouseAllDto(House house);

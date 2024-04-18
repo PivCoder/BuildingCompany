@@ -10,17 +10,17 @@ public class PlotSlimDto {
 
     @Positive
     @NotNull
-    Long id;
+    private Long id;
 
     @NotBlank
-    String name;
+    private String name;
 
     @NotBlank
-    String address;
+    private String address;
 
     @NotBlank
-    String description;
+    private String description;
 
     @NotBlank
-    String image;
+    private String image;
 }

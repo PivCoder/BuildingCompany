@@ -46,6 +46,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-testcontainers'
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.0.3'
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-suite-engine', version: '1.10.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.0.3'
     testImplementation 'org.testcontainers:postgresql'
 }

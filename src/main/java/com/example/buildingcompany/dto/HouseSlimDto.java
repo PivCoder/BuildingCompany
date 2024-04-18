@@ -10,21 +10,21 @@ public class HouseSlimDto {
 
     @Positive
     @NotNull
-    Long id;
+    private Long id;
 
     @NotNull
-    HouseTypeDto houseType;
+    private HouseTypeDto houseType;
 
     @NotBlank
-    String name;
+    private String name;
 
     @Positive
     @NotNull
-    double area;
+    private double area;
 
     @NotBlank
-    String description;
+    private String description;
 
     @NotBlank
-    String image;
+    private String image;
 }

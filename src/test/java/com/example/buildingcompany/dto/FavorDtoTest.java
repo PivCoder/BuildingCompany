@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 public class FavorDtoTest {
 
-    FavorMapper favorMapper = new FavorMapperImpl(new FavorTypeMapperImpl());
+    FavorMapper favorMapper = new FavorMapperImpl();
 
     FavorTypeMapper favorTypeMapper = new FavorTypeMapperImpl();
 
@@ -20,6 +20,7 @@ public class FavorDtoTest {
         FavorSlimDto favorSlimDto = new FavorSlimDto();
         favorSlimDto.setId(1L);
         FavorTypeDto favorTypeDto = new FavorTypeDto();
+        favorTypeDto.setId(1L);
         favorTypeDto.setName("test favor type dto");
         favorSlimDto.setFavorType(favorTypeDto);
         favorSlimDto.setDescription("des");
@@ -27,7 +28,7 @@ public class FavorDtoTest {
 
         Favor favor = favorMapper.toFavor(favorSlimDto);
 
-        Assertions.assertEquals((Object) favorSlimDto.getId(), favor.getId());
+        Assertions.assertEquals(favorSlimDto.getId(), favor.getId());
         Assertions.assertEquals(favorTypeMapper.toFavorType(favorSlimDto.getFavorType()).getName(), favor.getFavorType().getName());
         Assertions.assertEquals(favorSlimDto.getDescription(), favor.getDescription());
         Assertions.assertEquals(favorSlimDto.getImage(), favor.getImage());
@@ -38,6 +39,7 @@ public class FavorDtoTest {
         FavorAllDto favorAllDto = new FavorAllDto();
         favorAllDto.setId(1L);
         FavorTypeDto favorTypeDto = new FavorTypeDto();
+        favorTypeDto.setId(1L);
         favorTypeDto.setName("test favor type dto");
         favorAllDto.setFavorType(favorTypeDto);
         favorAllDto.setDescription("des");
@@ -50,7 +52,7 @@ public class FavorDtoTest {
 
         Favor favor = favorMapper.toFavor(favorAllDto);
 
-        Assertions.assertEquals((Object) favorAllDto.getId(), favor.getId());
+        Assertions.assertEquals(favorAllDto.getId(), favor.getId());
         Assertions.assertEquals(favorTypeMapper.toFavorType(favorAllDto.getFavorType()).getName(), favor.getFavorType().getName());
         Assertions.assertEquals(favorAllDto.getDescription(), favor.getDescription());
         Assertions.assertEquals(favorAllDto.getImage(), favor.getImage());

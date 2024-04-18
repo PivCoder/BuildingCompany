@@ -1,9 +1,14 @@
 package com.example.buildingcompany.dto;
 
+import com.example.buildingcompany.mapper.PlanningMapper;
+import com.example.buildingcompany.mapper.PlanningMapperImpl;
+import com.example.buildingcompany.model.Planning;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class PlanningSlimDtoTest {
+
+    private final PlanningMapper planningMapper = new PlanningMapperImpl();
 
     @Test
     public void givenPlanningSlimDto_whenSetFields_thenCorrect() {
@@ -23,11 +28,13 @@ public class PlanningSlimDtoTest {
         planningSlimDto.setNumberOfFloors(numberOfFloors);
         planningSlimDto.setImage(image);
 
+        Planning planning = planningMapper.toPlanning(planningSlimDto);
+
         // Then
-        Assertions.assertEquals(id, planningSlimDto.getId());
-        Assertions.assertEquals(length, planningSlimDto.getLength());
-        Assertions.assertEquals(width, planningSlimDto.getWidth());
-        Assertions.assertEquals(numberOfFloors, planningSlimDto.getNumberOfFloors());
-        Assertions.assertEquals(image, planningSlimDto.getImage());
+        Assertions.assertEquals(planning.getId(), planningSlimDto.getId());
+        Assertions.assertEquals(planning.getLength(), planningSlimDto.getLength());
+        Assertions.assertEquals(planning.getWidth(), planningSlimDto.getWidth());
+        Assertions.assertEquals(planning.getNumberOfFloors(), planningSlimDto.getNumberOfFloors());
+        Assertions.assertEquals(planning.getImage(), planningSlimDto.getImage());
     }
 }
