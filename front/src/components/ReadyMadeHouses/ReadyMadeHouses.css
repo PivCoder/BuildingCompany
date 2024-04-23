@@ -1,0 +1,17 @@
+.Housesfromscratch {
+	width: 100%;
+	background-color: #f1f1f1;
+	display: flex;
+	justify-content: center;
+}
+.Housesfromscratch_container {
+	width: 1216px;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 32px;
+}
+.Housesfromscratch_container h1 {
+	font-weight: 500;
+	font-size: 36px;
+	margin: 32px 0 0 32px;
+}

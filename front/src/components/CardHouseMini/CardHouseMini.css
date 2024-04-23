@@ -1,0 +1,23 @@
+.CardHouseMini {
+	width: 416px;
+	height: 392px;
+	border-radius: 30px;
+	background-color: #fff;
+}
+.CardHouseMini-info {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	height: 131px;
+}
+.CardHouseMini-info_text {
+	display: flex;
+	flex-direction: column;
+}
+.CardHouseMini-info_text > span {
+	font-family: Nunito;
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 32.74px;
+	text-align: left;
+}

@@ -1,0 +1,80 @@
+.Main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+.Main__firstsection {
+	margin-top: 160px;
+	width: 100%;
+	background-image: url('./media/bcg.jpg');
+	height: 671px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.firstsection__container {
+	width: 1156px;
+	height: 385px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.firstsection__container > h1 {
+	width: 763px;
+	font-weight: 700;
+	font-size: 64px;
+	color: aliceblue;
+}
+.firstsection__container > p {
+	width: 354px;
+	font-weight: 400;
+	font-size: 24px;
+	color: aliceblue;
+}
+.Main__secondsection {
+	width: 1161px;
+	display: flex;
+	height: 565px;
+	justify-content: space-between;
+}
+.secondsection-right {
+	width: 558px;
+	margin-top: 92px;
+}
+.secondsection-right > h2 {
+	font-weight: 600;
+	color: black;
+	font-size: 36px;
+}
+.secondsection-right > p {
+	font-weight: 400;
+	color: black;
+	font-size: 20px;
+	margin-top: 60px;
+}
+.secondsection-right > button {
+	width: 192px;
+	height: 64px;
+	border-radius: 30px;
+	margin-top: 80px;
+	background-color: #b4d8b6;
+}
+button:hover {
+	border: none;
+	outline: none;
+}
+button:active {
+	border: none;
+	outline: none;
+}
+button:focus {
+	border: none;
+	outline: none;
+}
+.secondsection-left {
+	width: 460px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}

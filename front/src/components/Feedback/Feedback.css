@@ -1,0 +1,129 @@
+.Feedback {
+	margin-top: 160px;
+	width: 100%;
+	height: 640px;
+	background-color: #f1f1f1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.Feedback-container {
+	display: flex;
+	justify-content: space-between;
+	width: 1280px;
+	height: 545px;
+}
+.Feedback-right {
+	margin-left: 62px;
+}
+.Feedback-right > h3 {
+	font-weight: 500;
+	font-size: 36px;
+}
+.Feedback-left > h3 {
+	font-weight: 500;
+	font-size: 36px;
+}
+
+.form {
+	margin-top: 60px;
+	width: 680px;
+	height: 448px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #ffffff;
+	border-radius: 30px;
+}
+.form_container {
+	display: flex;
+	flex-direction: column;
+	width: 480px;
+	height: 385px;
+}
+.form_container > span {
+	font-weight: 500;
+	font-size: 24px;
+}
+.form__input-box {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	margin-top: 33px;
+}
+.form__input-box > input {
+	padding-left: 15px;
+	width: 209px;
+	height: 44px;
+	border: none;
+	border-radius: 30px;
+	background-color: #f1f1f1;
+}
+
+.form_container > textarea {
+	max-width: 450px;
+	max-height: 140px;
+	background-color: #f1f1f1;
+	border-radius: 30px;
+	font-size: 20px;
+	padding: 10px 15px;
+	margin-top: 32px;
+	border: none;
+}
+
+.form_container > button {
+	width: 223px;
+	height: 64px;
+	border-radius: 30px;
+	background-color: #b4d8b6;
+	font-size: 24px;
+	margin-top: 32px;
+}
+.Feedback-left {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	align-items: flex-start;
+}
+.Feedback-left__mail,
+.Feedback-left__phone,
+.Feedback-left__geo {
+	display: flex;
+	align-items: center;
+}
+.Feedback-left__phone,
+.Feedback-left__geo {
+	margin-top: 32px;
+}
+.Feedback-left__mail {
+	margin-top: 60px;
+}
+.Feedback-left__mail > img,
+.Feedback-left__phone > img,
+.Feedback-left__geo > img {
+	margin-right: 48px;
+}
+.Feedback-left__mail > span {
+	font-size: 20px;
+}
+.spans {
+	display: flex;
+	flex-direction: column;
+	height: 48px;
+	justify-content: space-between;
+}
+.spans > span {
+	font-size: 20px;
+}
+
+.Feedback-left > span {
+	margin-top: 114px;
+	align-self: flex-end;
+	font-size: 20px;
+}
+.Feedback-left__contactBox {
+	margin-top: 25px;
+	display: flex;
+	justify-content: space-between;
+	width: 480px;
+}

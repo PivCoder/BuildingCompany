@@ -1,0 +1,31 @@
+.AboutUs {
+	margin-top: 160px;
+	width: 100%;
+	height: 672px;
+	background-color: #f1f1f1;
+	display: flex;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.AboutUs_container {
+	width: 1156px;
+	height: 549px;
+}
+.AboutUs_container h1 {
+	font-weight: bold;
+	font-size: 36px;
+}
+.AboutUs_container p {
+	width: 1034px;
+	margin-top: 62px;
+	font-size: 20px;
+}
+.AboutUs_container button {
+	width: 320px;
+	height: 64px;
+	margin-top: 32px;
+	border-radius: 30px;
+	background-color: #b4d8b6;
+	font-size: 24px;
+}
