@@ -1,0 +1,65 @@
+.Region {
+	width: 100%;
+	height: 608px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #f1f1f1;
+}
+.RegionCard_container {
+	width: 1216px;
+	height: 544px;
+	display: flex;
+	background-color: #ffffff;
+	border-radius: 30px;
+}
+.RegionCard__right {
+	display: flex;
+	flex-direction: column;
+	margin-left: 64px;
+	margin-top: 45px;
+}
+.RegionCard__right > b {
+	font-size: 24px;
+}
+.RegionCard__right > span {
+	font-size: 20px;
+	margin-top: 18px;
+	color: rgb(0, 0, 0, 0.7);
+}
+.RegionCard__right > p {
+	font-size: 20px;
+	margin-top: 48px;
+	color: rgb(0, 0, 0);
+}
+.RegionCard__spans {
+	width: 480px;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 32px;
+}
+.RegionCard__spans > p {
+	font-size: 20px;
+}
+.RegionCard__spans > span {
+	font-size: 20px;
+	color: rgb(0, 0, 0, 0.7);
+}
+.RegionSwiper {
+	width: 100%;
+	height: 590px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.RegionSwiper_container {
+	width: 1225px;
+	height: 440px;
+}
+.RegionSwiper_container > h2 {
+	font-size: 24px;
+	margin-left: 45px;
+}
+.RegionSwiper__swiper {
+	margin-top: 32px;
+}
