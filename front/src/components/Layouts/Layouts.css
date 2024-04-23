@@ -1,0 +1,22 @@
+.Layouts {
+	margin-top: 160px;
+	width: 100%;
+	background-color: #f1f1f1;
+	display: flex;
+	justify-content: center;
+}
+.Layouts_container {
+	width: 1347px;
+	margin-bottom: 32px;
+}
+.Layouts_container > h1 {
+	font-weight: 500;
+	font-size: 36px;
+	margin: 32px 0 0 32px;
+}
+.Layoutspull {
+	margin-top: 50px;
+	display: grid;
+	grid-template-columns: 416px 416px 416px;
+	gap: 49px;
+}
